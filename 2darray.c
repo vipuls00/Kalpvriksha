@@ -3,7 +3,7 @@
 int main() {
     int x, y;
 
-    printf("Enterrows and columns ");
+    printf("Enterrows and columns");
     scanf("%d %d", &x, &y);
 
     int arr[x][y];
