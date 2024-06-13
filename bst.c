@@ -32,20 +32,16 @@ struct node *insert(struct node *root, int data)
     return root;  
 }
 
-struct node *search(struct node *root, int key)
-{
-    if (root->data == key || root == NULL)
-    {
+struct node *search(struct node *root, int key) {
+    if (root == NULL || root->data == key) {
         return root;
     }
-    else if (root->data > key)
-    {
-        return search(root->left, key);
-    }
-    else if (root->data < key)
-    {
+
+    if (key > root->data) {
         return search(root->right, key);
     }
+
+    return search(root->left, key);
 }
 void inorderTraversal(struct node *root)
 {
@@ -67,6 +63,12 @@ int main()
     insert(root, 40);
     insert(root, 60);
     insert(root, 80);
-    inorderTraversal(root);
+    // inorderTraversal(root);
+   struct node* se =  search(root,20);
+    if (se != NULL)
+    {
+           printf("Element is present ");
+    }
+    
     return 0;
 }
