@@ -40,13 +40,31 @@ void printlist(struct node* head) {
     }
     printf("\n");
 }
-
+struct node* checkforsame(struct node* head1,struct node* head2){
+    struct node* same = NULL;
+    struct node* temp1 = head1;
+    while (temp1 != NULL)
+    {
+        struct node* temp2 = head2;
+        while (temp2 != NULL)
+        {
+            if (strcmp(temp1->data, temp2->data) == 0)
+            {
+                insertatend(&same,temp1->data);
+                break;
+            }
+            temp2 = temp2->next;
+        }
+        temp1 = temp1->next;
+        
+    }
+    return same;
+}
 struct node* checkunique(struct node* head1, struct node* head2) {
     struct node* uniqueList = NULL;
     struct node* curr1 = head1;
     struct node* curr2 = head2;
 
-    // Check elements of head1 that are not in head2
     while (curr1 != NULL) {
         struct node* temp = head2;
         int found = 0;
@@ -160,7 +178,7 @@ int main() {
         token = strtok(NULL, " ");
     }
 
-    struct node* intboth = checkForSameNodes(head1, head2);
+    struct node* intboth = checkforsame(head1, head2);
     printf("Common elements in the linked lists: ");
     printlist(intboth);
         struct node* unique = checkunique(head1, head2);
